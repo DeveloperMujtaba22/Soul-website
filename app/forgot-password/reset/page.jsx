@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Lock } from "lucide-react";
 import Image from "next/image";
-import forgot from "../../public/forgot.jpg";
+import forgot from "../../../public/forgot.jpg";
 
 export default function ResetPasswordPage() {
   const { isLoaded, signIn, setActive } = useSignIn();
@@ -82,7 +82,7 @@ export default function ResetPasswordPage() {
         await setActive({ session: result.createdSessionId });
         setSuccess("Password reset successful! Redirecting...");
         setTimeout(() => {
-          router.push("/dashboard");
+          router.push("/");
         }, 1500);
       } else {
         setError("Password reset failed. Please try again.");
