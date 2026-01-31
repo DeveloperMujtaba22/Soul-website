@@ -8,8 +8,8 @@ const Serving = () => {
   const images = [
     { src: '/program_1.png', alt: 'Meditation and mindfulness', border: 'left' },
     { src: '/program_2.png', alt: 'Yoga practice', border: 'right' },
-    { src: '/program_3.jpg', alt: 'Partner yoga', border: 'left' },
-    { src: '/program_4.jpg', alt: 'Meditation pose', border: 'right' }
+    { src: '/program_3.png', alt: 'Partner yoga', border: 'left' },
+    { src: '/program_4.png', alt: 'Meditation pose', border: 'right' }
   ]
 
   const nextSlide = () => {
