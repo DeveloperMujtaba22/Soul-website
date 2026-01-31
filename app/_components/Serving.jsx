@@ -123,6 +123,7 @@ const Serving = () => {
           </div>
 
           
+          
           <div className="relative overflow-hidden rounded-lg w-full h-64 cursor-pointer group">
             <div className="absolute left-0 top-1/4 bottom-1/4 w-1 bg-red-600 group-hover:top-0 group-hover:bottom-0 transition-all duration-300"></div>
             <img 
@@ -132,7 +133,7 @@ const Serving = () => {
             />
           </div>
 
-         
+          
           <div className="relative overflow-hidden rounded-lg w-full h-64 cursor-pointer group">
             <div className="absolute right-0 top-1/4 bottom-1/4 w-1 bg-red-600 group-hover:top-0 group-hover:bottom-0 transition-all duration-300"></div>
             <img 
