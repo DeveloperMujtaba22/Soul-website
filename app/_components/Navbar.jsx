@@ -185,7 +185,7 @@ const Navbar = () => {
             
           <Link 
   href="/contact" 
-  className="text-white hover:text-red-600 cursor-pointer transition-colors font-medium"
+  className="text-white hover:text-red-600 cursor-pointer transition-colors font-medium" onClick={toggleMenu}
 >
   Contact
 </Link>
