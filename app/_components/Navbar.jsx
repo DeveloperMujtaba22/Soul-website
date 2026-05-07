@@ -168,14 +168,14 @@ const Navbar = () => {
               Program
             </a>
             <Link 
-              href="/application-process" 
+              href="#process" 
               className="text-white hover:text-red-400 cursor-pointer transition-colors font-medium py-2"
               onClick={toggleMenu}
             >
               Application Process
             </Link>
             <Link 
-              href="/community" 
+              href="#services" 
               className="text-white hover:text-red-400 cursor-pointer transition-colors font-medium py-2"
               onClick={toggleMenu}
             >
