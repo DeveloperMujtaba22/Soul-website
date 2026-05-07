@@ -21,11 +21,11 @@ export async function POST(req) {
     });
 
     return NextResponse.json({ sessionId: session.id });
-  } catch (error) {
-    console.error('Stripe error:', error);
-    return NextResponse.json(
-      { error: 'Failed to create checkout session' },
-      { status: 500 }
-    );
-  }
+} catch (error) {
+  console.error('Stripe error:', error);  // <-- Yeh line terminal pe print karti hai
+  return NextResponse.json(
+    { error: 'Failed to create checkout session' },
+    { status: 500 }
+  );
+}
 }
