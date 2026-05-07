@@ -1,6 +1,7 @@
 
 import React from 'react'
 import Link from 'next/link'
+import BuyButton from './BuyButton';
 
 const About = () => {
   return (
@@ -35,27 +36,39 @@ const About = () => {
         </p>
         
         
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center items-center w-full max-w-md sm:max-w-none mx-auto">
-          <Link href="/application" className="w-full sm:w-auto">
-            <button className="w-full sm:w-auto bg-white hover:bg-gray-100 text-red-600 font-semibold py-2.5 sm:py-3 px-8 sm:px-10 rounded-full text-sm sm:text-base transition-all duration-300 transform hover:scale-105 shadow-lg">
-              Apply Now
-            </button>
-          </Link>
-          <Link href="/sign-in" className="w-full sm:w-auto">
-            <button className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white font-semibold py-2.5 sm:py-3 px-8 sm:px-10 rounded-full text-sm sm:text-base transition-all duration-300 transform hover:scale-105 shadow-lg">
-              Login
-            </button>
-          </Link>
-        </div>
-      </div>
+       <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center items-center w-full max-w-md sm:max-w-none mx-auto">
+  <Link href="/application" className="w-full sm:w-auto">
+    <button className="w-full sm:w-auto bg-white hover:bg-gray-100 text-red-600 font-semibold py-2.5 sm:py-3 px-8 sm:px-10 rounded-full text-sm sm:text-base transition-all duration-300 transform hover:scale-105 shadow-lg">
+      Apply Now
+    </button>
+  </Link>
+  <Link href="/sign-in" className="w-full sm:w-auto">
+    <button className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white font-semibold py-2.5 sm:py-3 px-8 sm:px-10 rounded-full text-sm sm:text-base transition-all duration-300 transform hover:scale-105 shadow-lg">
+      Login
+    </button>
+  </Link>
+
+          
+        {/* BuyButton yahan add karo */}
+  <div className="w-full sm:w-auto">
+    <BuyButton />
+  </div>
+</div>
+
 
       
-      <div className="absolute bottom-0 left-0 right-0 z-10">
-        <div className="h-1 bg-red-600 w-full"></div>
-      </div>
+     
+
+
+
+     
         
+    </div>
     </div>
   )
 }
+
+
+
 
 export default About

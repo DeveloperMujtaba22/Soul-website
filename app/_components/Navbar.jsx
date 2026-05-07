@@ -76,6 +76,13 @@ const Navbar = () => {
           >
             Serving the Community
           </Link>
+
+          <Link 
+  href="/contact" 
+  className="text-white hover:text-red-600 cursor-pointer transition-colors font-medium"
+>
+  Contact
+</Link>
         </div>
       </div>
 
