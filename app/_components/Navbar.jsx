@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { UserButton, SignedIn, SignedOut } from "@clerk/nextjs";
 import { Menu, X } from "lucide-react";
+import ApplyButton from './ApplyButton';
+
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -99,14 +101,11 @@ const Navbar = () => {
       
       
       <div className="hidden md:flex gap-3 items-center">
-        <Link href="/application">
-          <Button 
-            variant="ghost"
-            className="bg-transparent text-red-500 hover:bg-transparent hover:text-red-600 transition-colors text-base py-3 px-10 border-0 cursor-pointer"
-          >
-            Apply Now
-          </Button>
-        </Link>
+        <div className="w-full sm:w-auto">
+           <ApplyButton className="w-full sm:w-auto text-red-600 font-semibold py-2.5 sm:py-3 px-8 sm:px-10 rounded-full text-sm sm:text-base transition-all  transform hover:scale-105 shadow-lg disabled:opacity-50 cursor-pointer">
+             Apply Now
+           </ApplyButton>
+         </div>
 
         <SignedIn>
           <UserButton 
@@ -184,15 +183,12 @@ const Navbar = () => {
             </Link>
 
             <div className="flex flex-col gap-3 pt-4 border-t border-white/10">
-              <Link href="/apply" onClick={toggleMenu}>
-                <Button 
-                  variant="outline"
-                  className="w-full bg-transparent text-red-500 border-red-500 hover:bg-red-500 hover:text-white transition-colors text-base py-3"
-                >
-                  Apply Now
-                </Button>
-              </Link>
-            </div>
+  <div onClick={toggleMenu}>
+    <ApplyButton className="w-full bg-transparent text-red-500 border border-red-500 hover:bg-red-500 hover:text-white transition-colors text-base py-3 rounded-md font-medium disabled:opacity-50 cursor-pointer">
+      Apply Now
+    </ApplyButton>
+  </div>
+</div>
           </div>
         </div>
       )}

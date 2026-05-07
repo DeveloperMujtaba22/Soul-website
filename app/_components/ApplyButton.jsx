@@ -3,39 +3,38 @@ import { useState } from 'react';
 import { useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 
-export default function BuyButton() {
+export default function ApplyButton({ children, className }) {
   const [loading, setLoading] = useState(false);
   const { isSignedIn, isLoaded } = useUser();
   const router = useRouter();
 
-  const handleCheckout = async () => {
-    // Clerk abhi load ho raha hai to wait karo
+  const handleClick = async () => {
+    // Clerk abhi load ho raha hai
     if (!isLoaded) return;
 
-    // Agar logged in nahi hai, sign-in pe bhej do
+    // Logged in nahi hai to sign-in pe
     if (!isSignedIn) {
       router.push('/sign-in');
       return;
     }
 
-    // Logged in hai, Stripe checkout chalu karo
+    // Logged in hai, Stripe pe le jao with /application as success URL
     setLoading(true);
 
     try {
       const response = await fetch('/api/checkout', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          priceId: 'price_1TUVZgBT5TVR1shtdSdBBYBm'
+          priceId: 'price_1TUVZgBT5TVR1shtdSdBBYBm',
+          successUrl: '/application'
         }),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to create checkout');
+        throw new Error(data.error || 'Failed to start payment');
       }
 
       window.location.href = data.url;
@@ -48,11 +47,11 @@ export default function BuyButton() {
 
   return (
     <button
-      onClick={handleCheckout}
+      onClick={handleClick}
       disabled={loading || !isLoaded}
-      className="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-12 rounded-full text-lg transition-all duration-300 cursor-pointer transform hover:scale-105 shadow-lg disabled:opacity-50"
+      className={className}
     >
-      {loading ? 'Processing...' : 'Get Pro - $99'}
+      {loading ? 'Processing...' : children}
     </button>
   );
 }

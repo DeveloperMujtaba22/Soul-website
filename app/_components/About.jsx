@@ -2,6 +2,7 @@
 import React from 'react'
 import Link from 'next/link'
 import BuyButton from './BuyButton';
+import ApplyButton from './ApplyButton';
 
 const About = () => {
   return (
@@ -37,20 +38,16 @@ const About = () => {
         
         
        <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center items-center w-full max-w-md sm:max-w-none mx-auto">
-  <Link href="/application" className="w-full sm:w-auto">
-    <button className="w-full sm:w-auto bg-white hover:bg-gray-100 text-red-600 font-semibold py-2.5 sm:py-3 px-8 sm:px-10 rounded-full text-sm sm:text-base transition-all duration-300 transform hover:scale-105 shadow-lg">
+ <div className="w-full sm:w-auto">
+    <ApplyButton className="w-full sm:w-auto bg-white hover:bg-gray-100 text-red-600 font-semibold py-2.5 sm:py-3 px-8 sm:px-10 rounded-full text-sm sm:text-base transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 cursor-pointer">
       Apply Now
-    </button>
-  </Link>
-  <Link href="/sign-in" className="w-full sm:w-auto">
-    <button className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white font-semibold py-2.5 sm:py-3 px-8 sm:px-10 rounded-full text-sm sm:text-base transition-all duration-300 transform hover:scale-105 shadow-lg">
-      Login
-    </button>
-  </Link>
+    </ApplyButton>
+  </div>
+
 
           
         {/* BuyButton yahan add karo */}
-  <div className="w-full sm:w-auto">
+  <div className="w-full sm:w-auto ">
     <BuyButton />
   </div>
 </div>

@@ -5,7 +5,10 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export async function POST(req) {
   try {
-    const { priceId } = await req.json();
+    const { priceId, successUrl } = await req.json();
+
+    // Default success URL agar client ne nahi diya to /success
+    const successPath = successUrl || '/success';
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -16,11 +19,11 @@ export async function POST(req) {
         },
       ],
       mode: 'subscription',
-      success_url: `${req.headers.get('origin')}/success?session_id={CHECKOUT_SESSION_ID}`,
+      success_url: `${req.headers.get('origin')}${successPath}?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.headers.get('origin')}/`,
     });
 
-    return NextResponse.json({ 
+    return NextResponse.json({
       sessionId: session.id,
       url: session.url
     });
