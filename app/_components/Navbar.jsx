@@ -182,6 +182,14 @@ const Navbar = () => {
               Serving the Community
             </Link>
 
+            
+          <Link 
+  href="/contact" 
+  className="text-white hover:text-red-600 cursor-pointer transition-colors font-medium"
+>
+  Contact
+</Link>
+
             <div className="flex flex-col gap-3 pt-4 border-t border-white/10">
   <div onClick={toggleMenu}>
     <ApplyButton className="w-full bg-transparent text-red-500 border border-red-500 hover:bg-red-500 hover:text-white transition-colors text-base py-3 rounded-md font-medium disabled:opacity-50 cursor-pointer">
