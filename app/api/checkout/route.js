@@ -11,21 +11,24 @@ export async function POST(req) {
       payment_method_types: ['card'],
       line_items: [
         {
-          price: priceId, // You'll create this in Stripe Dashboard
+          price: priceId,
           quantity: 1,
         },
       ],
-      mode: 'payment',
+      mode: 'subscription',
       success_url: `${req.headers.get('origin')}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.headers.get('origin')}/`,
     });
 
-    return NextResponse.json({ sessionId: session.id });
-} catch (error) {
-  console.error('Stripe error:', error);  // <-- Yeh line terminal pe print karti hai
-  return NextResponse.json(
-    { error: 'Failed to create checkout session' },
-    { status: 500 }
-  );
-}
+    return NextResponse.json({ 
+      sessionId: session.id,
+      url: session.url
+    });
+  } catch (error) {
+    console.error('Stripe error:', error);
+    return NextResponse.json(
+      { error: error.message || 'Failed to create checkout session' },
+      { status: 500 }
+    );
+  }
 }

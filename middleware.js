@@ -14,6 +14,8 @@ const isPublicRoute = createRouteMatcher([
   '/api/webhooks/clerk(.*)',
   '/contact(.*)',
   '/api/contact(.*)',
+  '/api/checkout(.*)',  // <-- YEH ADD KARO
+  '/success(.*)',        // <-- YEH BHI ADD KARO (post-payment redirect ke liye)
 ])
 
 export default clerkMiddleware(async (auth, req) => {

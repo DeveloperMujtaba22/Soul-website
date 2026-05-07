@@ -1,8 +1,5 @@
 'use client';
 import { useState } from 'react';
-import { loadStripe } from '@stripe/stripe-js';
-
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
 export default function BuyButton() {
   const [loading, setLoading] = useState(false);
@@ -17,18 +14,20 @@ export default function BuyButton() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          priceId: 'price_xxxxxxxxxxxxx' // Replace with your Stripe Price ID
+          priceId: 'price_1TUVZgBT5TVR1shtdSdBBYBm' // <-- Yahan real Price ID daalo
         }),
       });
 
-      const { sessionId } = await response.json();
-      const stripe = await stripePromise;
-      
-      await stripe.redirectToCheckout({ sessionId });
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to create checkout');
+      }
+
+      window.location.href = data.url;
     } catch (error) {
       console.error('Error:', error);
-      alert('Something went wrong!');
-    } finally {
+      alert('Something went wrong: ' + error.message);
       setLoading(false);
     }
   };
